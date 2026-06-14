@@ -1,0 +1,77 @@
+<svg viewBox="0 0 960 660" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="960" height="660" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="480" y="40" text-anchor="middle" font-size="27" font-weight="700" fill="#1A1D24">ClaimGuard — Architecture</text>
+  <text x="480" y="64" text-anchor="middle" font-size="14" fill="#5A6472">Predict denials, protect revenue · built on Microsoft Copilot Studio</text>
+
+  <!-- INPUT -->
+  <rect x="28" y="150" width="210" height="190" rx="10" fill="#EAF1F8" stroke="#1F4E78" stroke-width="1.5"/>
+  <text x="133" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#1F4E78">1 · Claim Input</text>
+  <text x="133" y="206" text-anchor="middle" font-size="12" fill="#333">Claims pasted into chat</text>
+  <text x="133" y="224" text-anchor="middle" font-size="12" fill="#333">(table or list)</text>
+  <text x="133" y="252" text-anchor="middle" font-size="11.5" fill="#5A6472">ClaimID · Payer · Coverage</text>
+  <text x="133" y="270" text-anchor="middle" font-size="11.5" fill="#5A6472">DOS · ICD-10 · CPT</text>
+  <text x="133" y="288" text-anchor="middle" font-size="11.5" fill="#5A6472">Modifier · Auth · Charge</text>
+  <text x="133" y="318" text-anchor="middle" font-size="11" font-style="italic" fill="#8A93A0">format-flexible parsing</text>
+
+  <!-- arrow input -> engine -->
+  <line x1="238" y1="245" x2="296" y2="245" stroke="#1F4E78" stroke-width="2.5"/>
+  <polygon points="296,245 286,240 286,250" fill="#1F4E78"/>
+
+  <!-- ENGINE -->
+  <rect x="300" y="110" width="360" height="300" rx="12" fill="#FBF7E8" stroke="#C9A227" stroke-width="2.5"/>
+  <text x="480" y="138" text-anchor="middle" font-size="16" font-weight="700" fill="#1A1D24">2 · ClaimGuard Reasoning Engine</text>
+  <text x="480" y="158" text-anchor="middle" font-size="12" fill="#8A6D12">Microsoft Copilot Studio agent · 10-check pipeline</text>
+
+  <!-- 10 checks, two columns -->
+  <g font-size="12" fill="#333">
+    <text x="324" y="190">1 · Structural</text>
+    <text x="324" y="214">2 · Eligibility</text>
+    <text x="324" y="238">3 · Prior authorization</text>
+    <text x="324" y="262">4 · Code validity</text>
+    <text x="324" y="286">5 · Medical necessity</text>
+    <text x="500" y="190">6 · Modifier 25</text>
+    <text x="500" y="214">7 · Bundling / NCCI</text>
+    <text x="500" y="238">8 · Timely filing</text>
+    <text x="500" y="262">9 · Duplicate</text>
+    <text x="500" y="286">10 · Coordination of benefits</text>
+  </g>
+  <line x1="324" y1="304" x2="636" y2="304" stroke="#E0D6AE" stroke-width="1"/>
+  <text x="480" y="328" text-anchor="middle" font-size="12" font-weight="600" fill="#1A1D24">Denial prediction + fix + cash-impact model</text>
+  <text x="480" y="350" text-anchor="middle" font-size="11" fill="#5A6472">charge at risk · ~45-day AR delay (Dhamani) · rework cost</text>
+  <text x="480" y="386" text-anchor="middle" font-size="11" font-style="italic" fill="#8A93A0">reasons only from its rules — no invented codes</text>
+
+  <!-- arrow engine -> output -->
+  <line x1="660" y1="245" x2="718" y2="245" stroke="#1F4E78" stroke-width="2.5"/>
+  <polygon points="718,245 708,240 708,250" fill="#1F4E78"/>
+
+  <!-- OUTPUT -->
+  <rect x="722" y="150" width="210" height="190" rx="10" fill="#E9F5EC" stroke="#2E7D46" stroke-width="1.5"/>
+  <text x="827" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#2E7D46">3 · Output</text>
+  <text x="827" y="206" text-anchor="middle" font-size="12" fill="#333">Per claim:</text>
+  <text x="827" y="224" text-anchor="middle" font-size="11.5" fill="#5A6472">PASS / FLAG + reason</text>
+  <text x="827" y="242" text-anchor="middle" font-size="11.5" fill="#5A6472">+ fix + cash at risk</text>
+  <text x="827" y="272" text-anchor="middle" font-size="12" fill="#333">Batch summary:</text>
+  <text x="827" y="290" text-anchor="middle" font-size="11.5" fill="#5A6472">clean rate · total</text>
+  <text x="827" y="308" text-anchor="middle" font-size="11.5" fill="#5A6472">cash at risk (CFO view)</text>
+
+  <!-- KNOWLEDGE BASE -->
+  <line x1="480" y1="410" x2="480" y2="448" stroke="#C9A227" stroke-width="2.5"/>
+  <polygon points="480,410 475,420 485,420" fill="#C9A227"/>
+  <rect x="330" y="450" width="300" height="64" rx="10" fill="#F4F0FA" stroke="#6A4FA3" stroke-width="1.5"/>
+  <text x="480" y="476" text-anchor="middle" font-size="13" font-weight="700" fill="#6A4FA3">Knowledge Base (.docx)</text>
+  <text x="480" y="498" text-anchor="middle" font-size="11.5" fill="#5A6472">denial categories · coding logic · Dhamani rules</text>
+
+  <!-- ROADMAP BAND -->
+  <rect x="28" y="556" width="904" height="86" rx="10" fill="#FAFAFA" stroke="#B8C0CC" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="48" y="582" font-size="13" font-weight="700" fill="#5A6472">Roadmap →</text>
+  <g font-size="11.5" fill="#5A6472">
+    <text x="48" y="606">· Live payer eligibility APIs</text>
+    <text x="250" y="606">· Per-payer rule engines</text>
+    <text x="448" y="606">· HIS / Dhamani integration</text>
+    <text x="668" y="606">· Autonomous actions (w/ approval)</text>
+    <text x="48" y="628">· Denial-history learning loop (clinical &amp; payer-policy denials)</text>
+    <text x="448" y="628">· Documentation-sufficiency check (NLP over chart notes)</text>
+  </g>
+</svg>
